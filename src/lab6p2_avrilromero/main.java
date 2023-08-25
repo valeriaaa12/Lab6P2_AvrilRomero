@@ -79,12 +79,12 @@ public class main extends javax.swing.JFrame {
         agregarEstacional = new javax.swing.JButton();
         id1 = new javax.swing.JTextField();
         fab1 = new javax.swing.JTextField();
-        y1 = new javax.swing.JFormattedTextField();
-        precio1 = new javax.swing.JFormattedTextField();
         modelo1 = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        almacenamiento1 = new javax.swing.JFormattedTextField();
         conexion = new javax.swing.JTextField();
+        y1 = new javax.swing.JTextField();
+        precio1 = new javax.swing.JTextField();
+        controles = new javax.swing.JTextField();
+        almacenamiento = new javax.swing.JTextField();
 
         jTextField1.setText("jTextField1");
 
@@ -101,9 +101,10 @@ public class main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 102));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Consolas");
 
         Tabla.setBackground(new java.awt.Color(255, 255, 255));
@@ -263,14 +264,11 @@ public class main extends javax.swing.JFrame {
         jLabel11.setText("Tipo de Conexion");
 
         agregarEstacional.setText("Agregar Consola");
-
-        y1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-
-        precio1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-
-        almacenamiento1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        agregarEstacional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarEstacionalMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -293,19 +291,23 @@ public class main extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(id1)
                                     .addComponent(fab1)
+                                    .addComponent(modelo1)
                                     .addComponent(y1)
-                                    .addComponent(precio1)
-                                    .addComponent(modelo1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
+                                    .addComponent(precio1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextField1)
-                                    .addComponent(almacenamiento1)
-                                    .addComponent(conexion, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(conexion))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(controles)
+                                            .addComponent(almacenamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(agregarEstacional, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -334,15 +336,15 @@ public class main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(modelo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(controles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(almacenamiento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(almacenamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(conexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -350,7 +352,7 @@ public class main extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(36, 36, 36)
                 .addComponent(agregarEstacional, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consola Portatil", jPanel2);
@@ -420,7 +422,13 @@ public class main extends javax.swing.JFrame {
         try {
             int year = Integer.parseInt(y2.getText());
             double precio = Double.parseDouble(precio2.getText());
+            if (precio<=0) {
+                precio2.setText("");
+            }
             int bat = Integer.parseInt(bateria.getText());
+            if (bat<=0) {
+                bateria.setText("");
+            }
             String modelo = modelo2.getText();
             String size = "";
             if (small.isSelected()) {
@@ -456,6 +464,44 @@ public class main extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_bt_agregar2MouseClicked
+
+    private void agregarEstacionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarEstacionalMouseClicked
+        // TODO add your handling code here:
+        String id = id1.getText();
+        while (idVerify(id) == false) {
+            id1.setText("");
+            id = JOptionPane.showInputDialog(this, "Ingrese una identidad valida");
+            idVerify(id);
+            id1.setText(id);
+        }
+        String fab = fab1.getText();
+
+        try {
+            int year = Integer.parseInt(y1.getText());
+            int control = Integer.parseInt(controles.getText());
+            if (control<=0) {
+                controles.setText("");
+            }
+            String modelo = modelo2.getText();
+            int storage = Integer.parseInt(almacenamiento.getText());
+            String con = conexion.getText();
+            
+            Estacionaria consola = new Estacionaria();
+            consolas1.add(consola);
+            listarTabla();
+            id1.setText("");
+            fab1.setText("");
+            y1.setText("");
+            precio1.setText("");
+            modelo1.setText("");
+            controles.setText("");
+            almacenamiento.setText("");
+            conexion.setText("");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Existen datos invalidos en algunos de los campos");
+        }
+        
+    }//GEN-LAST:event_agregarEstacionalMouseClicked
     public static boolean idVerify(String id) {
         int cont1 = 0;
         int cont2 = 0;
@@ -539,19 +585,19 @@ public class main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;
     private javax.swing.JButton agregarEstacional;
-    private javax.swing.JFormattedTextField almacenamiento1;
+    private javax.swing.JTextField almacenamiento;
     private javax.swing.JTextField bateria;
     private javax.swing.JRadioButton big;
     private javax.swing.JButton bt_agregar2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField conexion;
+    private javax.swing.JTextField controles;
     private javax.swing.JMenuItem eliminar1;
     private javax.swing.JTextField fab1;
     private javax.swing.JTextField fab2;
     private javax.swing.JTextField id1;
     private javax.swing.JTextField id2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -585,12 +631,12 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem modificar1;
     private javax.swing.JRadioButton no;
     private javax.swing.JPopupMenu pm_Tabla;
-    private javax.swing.JFormattedTextField precio1;
+    private javax.swing.JTextField precio1;
     private javax.swing.JTextField precio2;
     private javax.swing.JRadioButton si;
     private javax.swing.JRadioButton small;
     private javax.swing.JMenuItem verjuegos;
-    private javax.swing.JFormattedTextField y1;
+    private javax.swing.JTextField y1;
     private javax.swing.JTextField y2;
     // End of variables declaration//GEN-END:variables
 }
