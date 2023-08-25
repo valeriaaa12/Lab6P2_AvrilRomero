@@ -21,7 +21,7 @@ public class Consola {
     public Consola() {
     }
 
-    public Consola(String identificacion, String fabricante, int year, double precio, ArrayList<Juego> juegos_disponibles, String modelo) {
+    public Consola(String identificacion, String fabricante, int year, double precio, String modelo) {
         this.identificacion = identificacion;
         this.fabricante = fabricante;
         this.year = year;
