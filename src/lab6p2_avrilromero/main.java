@@ -5,6 +5,8 @@
 package lab6p2_avrilromero;
 
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -81,6 +83,34 @@ public class main extends javax.swing.JFrame {
         si1 = new javax.swing.JRadioButton();
         no1 = new javax.swing.JRadioButton();
         bt_agregar3 = new javax.swing.JButton();
+        VerJuegos = new javax.swing.JDialog();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Lista = new javax.swing.JList<>();
+        nombre_juegos = new javax.swing.JTextField();
+        descripcion = new javax.swing.JTextField();
+        preciojuego = new javax.swing.JTextField();
+        usado = new javax.swing.JRadioButton();
+        nuevo = new javax.swing.JRadioButton();
+        si3 = new javax.swing.JRadioButton();
+        no3 = new javax.swing.JRadioButton();
+        fecha = new com.toedter.calendar.JDateChooser();
+        si4 = new javax.swing.JRadioButton();
+        no4 = new javax.swing.JRadioButton();
+        cantidad = new javax.swing.JTextField();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -410,6 +440,202 @@ public class main extends javax.swing.JFrame {
         ModificarFrame2Layout.setVerticalGroup(
             ModificarFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel7.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("Juegos");
+
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("Nombre");
+
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setText("Descripcion");
+
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Fecha");
+
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setText("Precio");
+
+        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel41.setText("Estado");
+
+        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel42.setText("Es rentable?");
+
+        jLabel43.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel43.setText("Tiene agregados?");
+
+        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel44.setText("Cantidad");
+
+        jButton2.setBackground(new java.awt.Color(102, 0, 153));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Agregar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        Lista.setBackground(new java.awt.Color(255, 255, 255));
+        Lista.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(Lista);
+
+        nombre_juegos.setBackground(new java.awt.Color(255, 255, 255));
+        nombre_juegos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre_juegosActionPerformed(evt);
+            }
+        });
+
+        descripcion.setBackground(new java.awt.Color(255, 255, 255));
+
+        preciojuego.setBackground(new java.awt.Color(255, 255, 255));
+
+        buttonGroup3.add(usado);
+        usado.setText("Usado");
+        usado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usadoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup3.add(nuevo);
+        nuevo.setText("Nuevo");
+
+        buttonGroup4.add(si3);
+        si3.setText("Si");
+
+        buttonGroup4.add(no3);
+        no3.setText("No");
+
+        fecha.setBackground(new java.awt.Color(255, 255, 255));
+        fecha.setDateFormatString("MMMM-dd-yyyy");
+
+        buttonGroup5.add(si4);
+        si4.setText("Si");
+
+        buttonGroup5.add(no4);
+        no4.setText("No");
+
+        cantidad.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(si3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(no3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel43)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel44)
+                        .addGap(47, 47, 47)
+                        .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(usado, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombre_juegos)
+                            .addComponent(descripcion)
+                            .addComponent(preciojuego)
+                            .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(jLabel36))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(si4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(no4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel36)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel37)
+                            .addComponent(nombre_juegos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel39)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel40)
+                            .addComponent(preciojuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel41)
+                            .addComponent(usado)
+                            .addComponent(nuevo))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel42)
+                            .addComponent(si3)
+                            .addComponent(no3))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel43)
+                            .addComponent(si4)
+                            .addComponent(no4))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel44)
+                            .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout VerJuegosLayout = new javax.swing.GroupLayout(VerJuegos.getContentPane());
+        VerJuegos.getContentPane().setLayout(VerJuegosLayout);
+        VerJuegosLayout.setHorizontalGroup(
+            VerJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        VerJuegosLayout.setVerticalGroup(
+            VerJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -939,6 +1165,46 @@ public class main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Existen datos invalidos en algunos de los campos");
         }
     }//GEN-LAST:event_bt_agregar3MouseClicked
+
+    private void nombre_juegosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre_juegosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre_juegosActionPerformed
+
+    private void usadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usadoActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        ArrayList<Juego> juegos = new ArrayList();
+        String nombre = nombre_juegos.getText();
+        String des = descripcion.getText();
+        Date fecha1 = fecha.getDate();
+        double precio1 = Double.parseDouble(preciojuego.getText());
+        String state = "";
+        if (usado.isSelected()) {
+            state+="Usado";
+        }
+        if (nuevo.isSelected()) {
+            state+="Nuevo";
+        }
+        boolean rent=false;
+        if (si3.isSelected()) {
+            rent=true;
+        }
+        if (no3.isSelected()) {
+            rent=false;
+        }
+        boolean ag =false;
+        if (si4.isSelected()) {
+            ag=true;
+        }
+        if (no4.isSelected()) {
+            ag=false;
+        }
+        int cant = Integer.parseInt(cantidad.getText());
+        
+    }//GEN-LAST:event_jButton2MouseClicked
     public static boolean idVerify(String id) {
         int cont1 = 0;
         int cont2 = 0;
@@ -1049,9 +1315,11 @@ public class main extends javax.swing.JFrame {
     }
     ArrayList<Consola> consolas1 = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> Lista;
     private javax.swing.JDialog ModificarFrame;
     private javax.swing.JDialog ModificarFrame2;
     private javax.swing.JTable Tabla;
+    private javax.swing.JDialog VerJuegos;
     private javax.swing.JButton agregarEstacional;
     private javax.swing.JTextField almacenamiento;
     private javax.swing.JTextField almacenamiento1;
@@ -1063,20 +1331,27 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton bt_agregar3;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JTextField cantidad;
     private javax.swing.JTextField conexion;
     private javax.swing.JTextField conexion1;
     private javax.swing.JTextField controles;
     private javax.swing.JTextField controles1;
+    private javax.swing.JTextField descripcion;
     private javax.swing.JMenuItem eliminar1;
     private javax.swing.JTextField fab1;
     private javax.swing.JTextField fab2;
     private javax.swing.JTextField fab3;
     private javax.swing.JTextField fab4;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.JTextField id1;
     private javax.swing.JTextField id2;
     private javax.swing.JTextField id3;
     private javax.swing.JTextField id4;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1106,7 +1381,16 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1118,7 +1402,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1132,15 +1418,23 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem modificar1;
     private javax.swing.JRadioButton no;
     private javax.swing.JRadioButton no1;
+    private javax.swing.JRadioButton no3;
+    private javax.swing.JRadioButton no4;
+    private javax.swing.JTextField nombre_juegos;
+    private javax.swing.JRadioButton nuevo;
     private javax.swing.JPopupMenu pm_Tabla;
     private javax.swing.JTextField precio1;
     private javax.swing.JTextField precio2;
     private javax.swing.JTextField precio3;
     private javax.swing.JTextField precio4;
+    private javax.swing.JTextField preciojuego;
     private javax.swing.JRadioButton si;
     private javax.swing.JRadioButton si1;
+    private javax.swing.JRadioButton si3;
+    private javax.swing.JRadioButton si4;
     private javax.swing.JRadioButton small;
     private javax.swing.JRadioButton small1;
+    private javax.swing.JRadioButton usado;
     private javax.swing.JMenuItem verjuegos;
     private javax.swing.JTextField y1;
     private javax.swing.JTextField y2;
