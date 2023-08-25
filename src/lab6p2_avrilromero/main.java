@@ -245,7 +245,7 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consola Estacionaria", jPanel3);
+        jTabbedPane1.addTab("Consola Portatil", jPanel3);
 
         jLabel3.setText("Identificación");
 
@@ -355,7 +355,7 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(154, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consola Portatil", jPanel2);
+        jTabbedPane1.addTab("Consola Estacionaria", jPanel2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -422,11 +422,11 @@ public class main extends javax.swing.JFrame {
         try {
             int year = Integer.parseInt(y2.getText());
             double precio = Double.parseDouble(precio2.getText());
-            if (precio<=0) {
+            if (precio <= 0) {
                 precio2.setText("");
             }
             int bat = Integer.parseInt(bateria.getText());
-            if (bat<=0) {
+            if (bat <= 0) {
                 bateria.setText("");
             }
             String modelo = modelo2.getText();
@@ -479,14 +479,18 @@ public class main extends javax.swing.JFrame {
         try {
             int year = Integer.parseInt(y1.getText());
             int control = Integer.parseInt(controles.getText());
-            if (control<=0) {
+            if (control <= 0) {
                 controles.setText("");
+            }
+            double precio = Double.parseDouble(precio1.getText());
+            if (precio <= 0) {
+                precio1.setText("");
             }
             String modelo = modelo2.getText();
             int storage = Integer.parseInt(almacenamiento.getText());
             String con = conexion.getText();
-            
-            Estacionaria consola = new Estacionaria();
+            //public Estacionaria(int controles, int almacenamiento, String conexion, String identificacion, String fabricante, int year, double precio, String modelo) {
+            Estacionaria consola = new Estacionaria(control, storage, con, id, fab, year, precio, modelo);
             consolas1.add(consola);
             listarTabla();
             id1.setText("");
@@ -497,10 +501,11 @@ public class main extends javax.swing.JFrame {
             controles.setText("");
             almacenamiento.setText("");
             conexion.setText("");
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Existen datos invalidos en algunos de los campos");
         }
-        
+
     }//GEN-LAST:event_agregarEstacionalMouseClicked
     public static boolean idVerify(String id) {
         int cont1 = 0;
@@ -530,13 +535,44 @@ public class main extends javax.swing.JFrame {
             Tabla.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{
-                        "Identificación", "Fabricante", "Años de Uso", "Precio","Modelo","Tipo"
+                        "Identificación", "Fabricante", "Años de Uso", "Precio", "Modelo", "Tipo"
                     }
             ));
 
             // TODO add your handling code here:
             for (Consola t : consolas1) {
-                Object[] row = {t.getIdentificacion(), t.getFabricante(), t.getYear(), t.getPrecio(),t.getModelo(),"Portatil"};
+                if (t instanceof Estacionaria) {
+                    Object[] row = {t.getIdentificacion(), t.getFabricante(), t.getYear(), t.getPrecio(), t.getModelo(), "Estacionaria"};
+                    DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
+                    modelo.addRow(row);
+                    Tabla.setModel(modelo);
+                } else {
+                    Object[] row = {t.getIdentificacion(), t.getFabricante(), t.getYear(), t.getPrecio(), t.getModelo(), "Portatil"};
+                    DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
+                    modelo.addRow(row);
+                    Tabla.setModel(modelo);
+                }
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void listarTabla2() {
+        try {
+
+            //limpiar tabla
+            Tabla.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        "Identificación", "Fabricante", "Años de Uso", "Precio", "Modelo", "Tipo"
+                    }
+            ));
+
+            // TODO add your handling code here:
+            for (Consola t : consolas1) {
+                Object[] row = {t.getIdentificacion(), t.getFabricante(), t.getYear(), t.getPrecio(), t.getModelo(), "Estacionaria"};
                 DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
                 modelo.addRow(row);
                 Tabla.setModel(modelo);
