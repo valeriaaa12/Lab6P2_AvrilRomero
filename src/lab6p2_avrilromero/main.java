@@ -884,10 +884,56 @@ public class main extends javax.swing.JFrame {
         consolas1.set(x, e);
         DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
         listarTabla();
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void bt_agregar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregar3MouseClicked
         // TODO add your handling code here:
+        int x = Tabla.getSelectedRow();
+        Portatil e = (Portatil) consolas1.get(x);
+        e.setIdentificacion(id4.getText());
+        e.setFabricante(fab4.getText());
+        e.setModelo(modelo4.getText());
+        try {
+            int year = Integer.parseInt(y4.getText());
+            double precio = Double.parseDouble(precio4.getText());
+            if (precio <= 0) {
+                precio4.setText("");
+            }
+            e.setPrecio(precio);
+            e.setYear(year);
+
+            int bat = Integer.parseInt(bateria1.getText());
+            if (bat <= 0) {
+                bateria1.setText("");
+            }
+            e.setDuracion(bat);
+            String modelo = modelo4.getText();
+            String size = "";
+            if (small1.isSelected()) {
+                size += "Pequeño";
+            }
+            if (medium1.isSelected()) {
+                size += "Mediano";
+            }
+            if (big1.isSelected()) {
+                size += "Grande";
+            }
+            e.setSize(size);
+            boolean has = false;
+            if (si1.isSelected()) {
+                has = true;
+            }
+            if (no1.isSelected()) {
+                has = false;
+            }
+            e.setEstuche(has);
+            consolas1.set(x, e);
+            DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
+            listarTabla();
+        } catch (NumberFormatException y) {
+            JOptionPane.showMessageDialog(this, "Existen datos invalidos en algunos de los campos");
+        }
     }//GEN-LAST:event_bt_agregar3MouseClicked
     public static boolean idVerify(String id) {
         int cont1 = 0;
@@ -912,7 +958,6 @@ public class main extends javax.swing.JFrame {
 
     private void listarTabla() {
         try {
-
             //limpiar tabla
             Tabla.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
@@ -920,7 +965,6 @@ public class main extends javax.swing.JFrame {
                         "Identificación", "Fabricante", "Años de Uso", "Precio", "Modelo", "Tipo"
                     }
             ));
-
             // TODO add your handling code here:
             for (Consola t : consolas1) {
                 if (t instanceof Estacionaria) {
