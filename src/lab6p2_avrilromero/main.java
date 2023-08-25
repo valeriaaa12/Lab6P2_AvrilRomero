@@ -884,6 +884,8 @@ public class main extends javax.swing.JFrame {
         consolas1.set(x, e);
         DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
         listarTabla();
+        ModificarFrame.dispose();
+        JOptionPane.showMessageDialog(this, "Modificado exitosamente!");
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -931,6 +933,8 @@ public class main extends javax.swing.JFrame {
             consolas1.set(x, e);
             DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
             listarTabla();
+            ModificarFrame2.dispose();
+            JOptionPane.showMessageDialog(this, "Modificado exitosamente!");
         } catch (NumberFormatException y) {
             JOptionPane.showMessageDialog(this, "Existen datos invalidos en algunos de los campos");
         }
