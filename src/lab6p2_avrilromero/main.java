@@ -1203,6 +1203,17 @@ public class main extends javax.swing.JFrame {
             ag=false;
         }
         int cant = Integer.parseInt(cantidad.getText());
+        // public Juego(String nombre, String descripcion, Date fecha, double precio, String estado, boolean rentable, boolean agregado, int cantidad) {
+        Juego j = new Juego(nombre,des,fecha1,precio1,state,rent,ag,cant);
+        juegos.add(j);
+        int x = Tabla.getSelectedRow();
+        Consola e = consolas1.get(x);
+        e.setJuegos_disponibles(juegos);
+        DefaultListModel model = (DefaultListModel) Lista.getModel();
+        for (int i = 0; i < e.getJuegos_disponibles().size(); i++) {
+            model.addElement(e.getJuegos_disponibles().get(i));
+        }
+        Lista.setModel(model);
         
     }//GEN-LAST:event_jButton2MouseClicked
     public static boolean idVerify(String id) {
