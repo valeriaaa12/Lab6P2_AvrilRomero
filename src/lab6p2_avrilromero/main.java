@@ -111,6 +111,10 @@ public class main extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
         buttonGroup5 = new javax.swing.ButtonGroup();
+        pm_lista = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -179,6 +183,11 @@ public class main extends javax.swing.JFrame {
         pm_Tabla.add(jSeparator2);
 
         verjuegos.setText("Ver juegos de consola");
+        verjuegos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verjuegosActionPerformed(evt);
+            }
+        });
         pm_Tabla.add(verjuegos);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -483,6 +492,11 @@ public class main extends javax.swing.JFrame {
 
         Lista.setBackground(new java.awt.Color(255, 255, 255));
         Lista.setModel(new DefaultListModel());
+        Lista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(Lista);
 
         nombre_juegos.setBackground(new java.awt.Color(255, 255, 255));
@@ -637,6 +651,20 @@ public class main extends javax.swing.JFrame {
             VerJuegosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jMenuItem1.setText("Eliminar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        pm_lista.add(jMenuItem1);
+
+        jMenuItem2.setText("Modificar");
+        pm_lista.add(jMenuItem2);
+
+        jMenuItem3.setText("Agregar");
+        pm_lista.add(jMenuItem3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1098,6 +1126,7 @@ public class main extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         int x = Tabla.getSelectedRow();
+
         Estacionaria e = (Estacionaria) consolas1.get(x);
         String idmod = e.getIdentificacion();
         e.setIdentificacion(id3.getText());
@@ -1183,30 +1212,31 @@ public class main extends javax.swing.JFrame {
         double precio1 = Double.parseDouble(preciojuego.getText());
         String state = "";
         if (usado.isSelected()) {
-            state+="Usado";
+            state += "Usado";
         }
         if (nuevo.isSelected()) {
-            state+="Nuevo";
+            state += "Nuevo";
         }
-        boolean rent=false;
+        boolean rent = false;
         if (si3.isSelected()) {
-            rent=true;
+            rent = true;
         }
         if (no3.isSelected()) {
-            rent=false;
+            rent = false;
         }
-        boolean ag =false;
+        boolean ag = false;
         if (si4.isSelected()) {
-            ag=true;
+            ag = true;
         }
         if (no4.isSelected()) {
-            ag=false;
+            ag = false;
         }
         int cant = Integer.parseInt(cantidad.getText());
         // public Juego(String nombre, String descripcion, Date fecha, double precio, String estado, boolean rentable, boolean agregado, int cantidad) {
-        Juego j = new Juego(nombre,des,fecha1,precio1,state,rent,ag,cant);
+        Juego j = new Juego(nombre, des, fecha1, precio1, state, rent, ag, cant);
         juegos.add(j);
         int x = Tabla.getSelectedRow();
+        juego_seleccionado = x;
         Consola e = consolas1.get(x);
         e.setJuegos_disponibles(juegos);
         DefaultListModel model = (DefaultListModel) Lista.getModel();
@@ -1214,8 +1244,56 @@ public class main extends javax.swing.JFrame {
             model.addElement(e.getJuegos_disponibles().get(i));
         }
         Lista.setModel(model);
-        
+        nombre_juegos.setText("");
+        descripcion.setText("");
+        cantidad.setText("");
+
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void verjuegosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verjuegosActionPerformed
+        // TODO add your handling code here:
+        int x = Tabla.getSelectedRow();
+        juego_seleccionado = x;
+        DefaultListModel model = (DefaultListModel) Lista.getModel();
+        while (model.size() > 0) {
+            model.removeElementAt(0);
+        }
+        Consola e = consolas1.get(juego_seleccionado);
+        for (int i = 0; i < e.getJuegos_disponibles().size(); i++) {
+            model.addElement(e.getJuegos_disponibles().get(i));
+        }
+        System.out.println(juego_seleccionado);
+        Lista.setModel(model);
+        VerJuegos.pack();
+        VerJuegos.setModal(true);
+        VerJuegos.setLocationRelativeTo(null);
+        VerJuegos.setVisible(true);
+    }//GEN-LAST:event_verjuegosActionPerformed
+
+    private void ListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaMouseClicked
+        // TODO add your handling code here:
+        if (evt.isMetaDown()) {
+            pm_lista.show(evt.getComponent(),
+                    evt.getX(), evt.getY());
+
+        }
+    }//GEN-LAST:event_ListaMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        if (Lista.getSelectedIndex() >= 0) {
+            int response = JOptionPane.showConfirmDialog(this, "Seguro de eliminar? ", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == 0) {//(response== JOptionPane.OK_OPTION)
+                DefaultListModel modelo
+                        = (DefaultListModel) Lista.getModel();
+                modelo.remove(Lista.getSelectedIndex());
+                Lista.setModel(modelo);
+                JOptionPane.showMessageDialog(this,
+                        "Eliminado exitosamente");
+            }
+
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     public static boolean idVerify(String id) {
         int cont1 = 0;
         int cont2 = 0;
@@ -1325,6 +1403,7 @@ public class main extends javax.swing.JFrame {
         });
     }
     ArrayList<Consola> consolas1 = new ArrayList();
+    int juego_seleccionado = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> Lista;
     private javax.swing.JDialog ModificarFrame;
@@ -1407,6 +1486,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1434,6 +1516,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField nombre_juegos;
     private javax.swing.JRadioButton nuevo;
     private javax.swing.JPopupMenu pm_Tabla;
+    private javax.swing.JPopupMenu pm_lista;
     private javax.swing.JTextField precio1;
     private javax.swing.JTextField precio2;
     private javax.swing.JTextField precio3;
